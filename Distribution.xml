@@ -15,44 +15,45 @@
 
     <script>
         <![CDATA[
-            function check_dependencies() 
-            {
-			
-                var missing = '';
+            function checkDependencies() {
+                var isInstalled = function(name, loc, url) {
+                    if (!system.files.fileExistsAtPath(loc))
+                        return "'" + loc + "' was not found.\nPlease install " + name + ".\n" + url + "\n\n";
+                    return "";
+                };
 
-                if (!system.files.fileExistsAtPath('/usr/bin/xcodebuild'))
-                    missing += "- Xcode Command Line Tools was not found.\nhttps://developer.apple.com/xcode/\n\n"; 
+                var missing = isInstalled('Node.js', '/usr/local/bin/node', 'https://nodejs.org/en/download/')
+                            + isInstalled('NPM', '/usr/local/bin/npm', 'https://nodejs.org/en/download/')
+                            + isInstalled('Xcode Command Line Tools', '/usr/bin/xcodebuild', 'https://developer.apple.com/xcode/');
 
-                if (missing.length > 0)
-                {
-                    my.result.title = 'Missing Dependencies'; 
-                    my.result.message = "Unable to install Uno SDK because some required dependencies were missing:\n\n" + missing;
+                if (missing.length > 0) {
+                    my.result.title = 'Missing dependencies'; 
+                    my.result.message = missing;
                     my.result.type = 'Fatal';
                     return false; 
-				}
+                }
 
                 return true;
             }
-
         ]]>
     </script>
-	
-    <installation-check script="check_dependencies()" />
+
+    <installation-check script="checkDependencies()" />
 
     <pkg-ref id="kr.fuseapps.fuse"/>
     
     <choices-outline>
         <line choice="default">
-            <line choice="kr.fuseapps.fuse"/>
+            <line choice="kr.fuseapps.x"/>
         </line>
     </choices-outline>
     
     <choice id="default"/>
     
     <choice id="kr.fuseapps.fuse" visible="false">
-        <pkg-ref id="kr.fuseapps.fuse"/>
+        <pkg-ref id="kr.fuseapps.x"/>
     </choice>
 
-    <pkg-ref id="kr.fuseapps.fuse" version="0.8" onConclusion="none">fuse.pkg</pkg-ref>
+    <pkg-ref id="kr.fuseapps.x" version="1.15" onConclusion="none">fuse-x.pkg</pkg-ref>
 
 </installer-gui-script>

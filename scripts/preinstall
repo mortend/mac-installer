@@ -6,9 +6,7 @@ rm -rf /usr/local/bin/fuse
 rm -rf /usr/local/bin/uno
 rm -rf /usr/local/bin/unotest #No longer exists, but could still be there from a previous install
 rm -rf /Applications/Fuse.app #Setting BundleOverwriteAction to "upgrade" doesn't work 
-rm -rf /Applications/Fuse\ X.app #Setting BundleOverwriteAction to "upgrade" doesn't work 
 rm -rf /Applications/fuse\ X.app #Setting BundleOverwriteAction to "upgrade" doesn't work 
-rm -rf /Library/Application\ Support/fuse\ X/Packages
 
 # Old path
 rm -rf /usr/share/uno/Packages
