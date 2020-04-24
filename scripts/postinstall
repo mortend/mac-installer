@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Reset permissions to root
+chown -R root:admin /usr/local/bin/uno
+chown -R root:wheel /usr/local/share/uno/Packages
+chown -R root:wheel /Library/Application\ Support/fuse\ X/Packages
+chown -R root:wheel /Applications/fuse\ X.app
+
+mkdir -p /usr/local/share/uno/SDKs
+chmod -R a+wr /usr/local/share/uno
+
+chmod +x /Applications/fuse\ X.app/Contents/Mono/bin/mono
+chmod +x /Applications/fuse\ X.app/Contents/SketchImporter/fondu
+chmod -R a+rwx /Applications/fuse\ X.app/Contents/Modules
+
+#Remove old automator
+rm -rf /Applications/fuse\ X.app/Contents/Automators/Fuse\ preview.workflow
+
+if [ -f "/usr/share/uno/SDKs/.sdkconfig" ]; then
+	cp "/usr/share/uno/SDKs/.sdkconfig" "/usr/local/share/uno/SDKs/.sdkconfig"
+	rm -f "/usr/share/uno/SDKs/.sdkconfig"	
+fi
+
+su "$USER" -c '/Applications/fuse\ X.app/Contents/MacOS/fuse\ X kill-all'
+
+# A workaround for a bug where we managed to set the following folder
+# with wrong permissions... :/
+APPDATA="$HOME/Library/Application Support/Fusetools"
+if [ -d "$APPDATA" ]; then
+    chown -R "$USER" "$APPDATA"
+fi
