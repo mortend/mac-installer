@@ -4,7 +4,7 @@
     <title>fuse X</title>
     <organization>kr.fuseapps</organization>
     <license file="license.html" />
-    <app id="kr.fuseapps.FuseTray"/>
+    <app id="kr.fuseapps.tray"/>
     <domains enable_localSystem="true"/>
     <options customize="never" require-scripts="true" rootVolumeOnly="true" />
 
@@ -40,7 +40,7 @@
 
     <installation-check script="checkDependencies()" />
 
-    <pkg-ref id="kr.fuseapps.fuse"/>
+    <pkg-ref id="kr.fuseapps.x"/>
     
     <choices-outline>
         <line choice="default">
@@ -50,7 +50,7 @@
     
     <choice id="default"/>
     
-    <choice id="kr.fuseapps.fuse" visible="false">
+    <choice id="kr.fuseapps.x" visible="false">
         <pkg-ref id="kr.fuseapps.x"/>
     </choice>
 
