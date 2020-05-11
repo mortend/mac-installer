@@ -5,11 +5,6 @@ cd "`dirname "$0"`"
 # Clean up old stuff
 rm -rf pkgs *.pkg
 
-
-# Sign app bundlesif ! [ "$SIGN" = "0" ]; then
-    codesign --force --deep -s "Developer ID Application: Outracks Technologies AS" root/Applications/fuse\ X.app
-fi
-
 # Remove all .DS_Store files
 find root -name ".DS_Store" -depth -exec rm {} \;
 
@@ -33,7 +28,7 @@ productbuild --distribution Distribution.xml \
     --resources resources/ \
     $UNSIGNED
 
-if [ "$SIGN" = "0" ]; then
+if [ "$SIGN" != 1 ]; then
     exit 0
 fi
 
