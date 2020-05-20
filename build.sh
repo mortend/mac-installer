@@ -13,7 +13,6 @@ chmod +x scripts/*
 
 mkdir -p pkgs
 pkgbuild --root root \
-    --component-plist components.plist \
     --identifier kr.fuseapps.x \
     --version $VERSION \
     --ownership recommended \
