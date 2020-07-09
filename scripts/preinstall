@@ -13,3 +13,7 @@ rm -rf /usr/share/uno/Packages
 rm -rf /usr/bin/uno
 rm -rf /usr/bin/unotest #No longer exists, but could still be there from a previous install
 rm -rf /usr/bin/fuse
+
+# Temp files
+rm -rf /tmp/install-fuse.*
+rm -rf /tmp/fuse-*.tgz

@@ -4,17 +4,31 @@ set -e
 # Config
 export PATH=/usr/local/bin:$PATH
 export TGZ=/tmp/fuse-x-studio-mac.tgz
-export DST=`npm prefix -g`/lib/node_modules/@fuse-x/studio-mac
+export PREFIX=`npm prefix -g`
+export DST=$PREFIX/lib/node_modules/@fuse-x/studio-mac
 export BIN=$DST/bin/Release
 export APP=$BIN/fuse\ X.app
-export EXE=$BIN/fuse.exe
+export FUSE=$PREFIX/bin/fuse
+export UNO=$PREFIX/bin/uno
+
+# Debug
+echo USER:  $USER
+echo HOME:  $HOME
+echo DST:   $DST
+echo FUSE:  $FUSE
+echo UNO:   $UNO
 
 # Install
 npm install -g -f "$TGZ"
-mono "$EXE" --version
-mono "$EXE" kill-all
+"$FUSE" kill-all
 
 # Copy app
-cp -R "$APP" /Applications/
-echo "require \"$DST/.unoconfig\"\n" \
-	> /Applications/fuse\ X.app/Contents/.unoconfig
+# cp -R "$APP" /Applications/
+# echo "require \"$DST/.unoconfig\"\n" \
+# 	> /Applications/fuse\ X.app/Contents/.unoconfig
+
+# Symlink app (for now)
+ln -sf "$APP" /Applications/
+
+# Warm-up
+"$UNO" build "$DST/empty"
