@@ -4,25 +4,25 @@
     <title>fuse X</title>
     <organization>kr.fuseapps</organization>
     <license file="license.html" />
-    <app id="kr.fuseapps.tray"/>
+    <!--<app id="kr.fuseapps.studio"/>-->
     <domains enable_localSystem="true"/>
     <options customize="never" require-scripts="true" rootVolumeOnly="true" />
 
     <allowed-os-versions>
-        <!-- Mountain Lion -->
-        <os-version min="10.8" />
+        <os-version min="10.10" />
     </allowed-os-versions>
 
     <script>
         <![CDATA[
             function checkDependencies() {
                 var isInstalled = function(name, loc, url) {
-                    if (!system.files.fileExistsAtPath(loc))
-                        return "'" + loc + "' was not found.\nPlease install " + name + ".\n" + url + "\n\n";
-                    return "";
+                    return !system.files.fileExistsAtPath(loc)
+                        ? "'" + loc + "' was not found.\nPlease install " + name + " and try again.\n" + url + "\n\n"
+                        : "";
                 };
 
-                var missing = isInstalled('Node.js', '/usr/local/bin/node', 'https://nodejs.org/en/download/')
+                var missing = isInstalled('Mono', '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono', 'https://www.mono-project.com/download/')
+                            + isInstalled('Node.js', '/usr/local/bin/node', 'https://nodejs.org/en/download/')
                             + isInstalled('NPM', '/usr/local/bin/npm', 'https://nodejs.org/en/download/')
                             + isInstalled('Xcode Command Line Tools', '/usr/bin/xcodebuild', 'https://developer.apple.com/xcode/');
 
@@ -40,20 +40,20 @@
 
     <installation-check script="checkDependencies()" />
 
-    <pkg-ref id="kr.fuseapps.x"/>
+    <pkg-ref id="kr.fuseapps.studio"/>
     
     <choices-outline>
         <line choice="default">
-            <line choice="kr.fuseapps.x"/>
+            <line choice="kr.fuseapps.studio"/>
         </line>
     </choices-outline>
     
     <choice id="default"/>
     
-    <choice id="kr.fuseapps.x" visible="false">
-        <pkg-ref id="kr.fuseapps.x"/>
+    <choice id="kr.fuseapps.studio" visible="false">
+        <pkg-ref id="kr.fuseapps.studio"/>
     </choice>
 
-    <pkg-ref id="kr.fuseapps.x" version="1.15" onConclusion="none">fuse-x.pkg</pkg-ref>
+    <pkg-ref id="kr.fuseapps.studio" version="1.15" onConclusion="none">fuse-x.pkg</pkg-ref>
 
 </installer-gui-script>
