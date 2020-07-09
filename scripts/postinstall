@@ -1,6 +1,6 @@
 #!/bin/sh
 export PATH=/usr/local/bin:$PATH
-export TGZ=/tmp/fuse-x-studio-mac-2.0.0-beta.1.tgz
+export TGZ=/tmp/fuse-x-studio-mac.tgz
 export DST=`npm prefix -g`/lib/node_modules/@fuse-x/studio-mac
 export BIN=$DST/bin/Release
 export APP=$BIN/fuse\ X.app
