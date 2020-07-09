@@ -16,11 +16,11 @@ cp -f install-fuse.sh root/tmp/
 
 mkdir -p pkgs
 pkgbuild --root root \
-    --identifier kr.fuseapps.x \
+    --identifier kr.fuseapps.studio \
     --version $VERSION \
     --ownership recommended \
     --scripts scripts \
-    pkgs/fuse-x.pkg
+    pkgs/fuse-studio.pkg
 
 UNSIGNED="fuse-unsigned.pkg"
 SIGNED="fuse-signed.pkg"

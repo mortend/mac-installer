@@ -4,9 +4,12 @@
     <title>fuse X</title>
     <organization>kr.fuseapps</organization>
     <license file="license.html" />
-    <!--<app id="kr.fuseapps.studio"/>-->
+
     <domains enable_localSystem="true"/>
     <options customize="never" require-scripts="true" rootVolumeOnly="true" />
+
+    <!--<app id="kr.fuseapps.studio"/>-->
+    <!--<app id="kr.fuseapps.tray"/>-->
 
     <allowed-os-versions>
         <os-version min="10.10" />
@@ -54,6 +57,6 @@
         <pkg-ref id="kr.fuseapps.studio"/>
     </choice>
 
-    <pkg-ref id="kr.fuseapps.studio" version="1.15" onConclusion="none">fuse-x.pkg</pkg-ref>
+    <pkg-ref id="kr.fuseapps.studio" onConclusion="none">fuse-studio.pkg</pkg-ref>
 
 </installer-gui-script>
