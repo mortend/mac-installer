@@ -1,10 +1,4 @@
 #!/bin/sh
-export PATH=/usr/local/bin:$PATH
-export TGZ=/tmp/fuse-x-studio-mac.tgz
-export DST=`npm prefix -g`/lib/node_modules/@fuse-x/studio-mac
-export BIN=$DST/bin/Release
-export APP=$BIN/fuse\ X.app
-export EXE=$BIN/fuse.exe
 
 if [ -n "$SUDO_USER" ]; then
 	export USER=$SUDO_USER
@@ -13,18 +7,15 @@ fi
 echo USER: $USER
 echo $USER > /tmp/USER
 
-# Install
-chown -R "$USER" "$DST"
-su "$USER" -c 'npm install -g -f "$TGZ"' || exit 1
-su "$USER" -c 'mono "$EXE" --version' || exit 1
-su "$USER" -c 'mono "$EXE" kill-all'
+function error {
+	cat /tmp/install-fuse.err
+	exit 1
+}
 
-# Copy app
-cp -R "$APP" /Applications/
-echo "require \"$DST/.unoconfig\"\n" \
-	> /Applications/fuse\ X.app/Contents/.unoconfig
-chown -R "$USER" /Applications/fuse\ X.app
+su "$USER" -c 'bash /tmp/install-fuse.sh 2> /tmp/install-fuse.err > /tmp/install-fuse.log' || error
 
 # Reset permissions
 #chown -R root:wheel /Applications/fuse\ X.app
 #chmod +x /Applications/fuse\ X.app/Contents/SketchImporter/fondu
+
+echo Success
