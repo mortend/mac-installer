@@ -19,6 +19,7 @@ echo FUSE:  $FUSE
 echo UNO:   $UNO
 
 # Install
+rm -rf ~/.dotnet-run
 npm install -g -f "$TGZ"
 "$FUSE" kill-all
 
