@@ -1,16 +1,18 @@
 #!/bin/bash
 set -e
 
-# Config
+# Mono and NPM
 export PATH=/usr/local/bin:$PATH
 export PATH=/Library/Frameworks/Mono.framework/Versions/Current/Commands:$PATH
-export TGZ=/tmp/fuse-x-studio-mac.tgz
-export PREFIX=`npm prefix -g`
-export DST=$PREFIX/lib/node_modules/@fuse-x/studio-mac
-export BIN=$DST/bin/Release
-export APP=$BIN/fuse\ X.app
-export FUSE=$PREFIX/bin/fuse
-export UNO=$PREFIX/bin/uno
+
+# Config
+TGZ=/tmp/fuse-x-studio-mac.tgz
+PREFIX=`npm prefix -g`
+DST=$PREFIX/lib/node_modules/@fuse-x/studio-mac
+BIN=$DST/bin/Release
+APP=$BIN/fuse\ X.app
+FUSE=$PREFIX/bin/fuse
+UNO=$PREFIX/bin/uno
 
 # Debug
 echo USER:  $USER
