@@ -3,6 +3,7 @@ set -e
 
 # Config
 export PATH=/usr/local/bin:$PATH
+export PATH=/Library/Frameworks/Mono.framework/Versions/Current/Commands:$PATH
 export TGZ=/tmp/fuse-x-studio-mac.tgz
 export PREFIX=`npm prefix -g`
 export DST=$PREFIX/lib/node_modules/@fuse-x/studio-mac
