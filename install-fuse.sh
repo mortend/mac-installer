@@ -34,5 +34,8 @@ npm install -g -f "$TGZ"
 # Symlink app (for now)
 ln -sf "$APP" /Applications/
 
+# Copy uri-handler app
+cp -R "$BIN"/fuse-uri.app /Applications/
+
 # Warm-up
 "$UNO" build "$DST/empty"
