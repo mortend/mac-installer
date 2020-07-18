@@ -26,8 +26,7 @@
 
                 var missing = isInstalled('Mono', '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono', 'https://www.mono-project.com/download/')
                             + isInstalled('Node.js', '/usr/local/bin/node', 'https://nodejs.org/en/download/')
-                            + isInstalled('NPM', '/usr/local/bin/npm', 'https://nodejs.org/en/download/')
-                            + isInstalled('Xcode Command Line Tools', '/usr/bin/xcodebuild', 'https://developer.apple.com/xcode/');
+                            + isInstalled('NPM', '/usr/local/bin/npm', 'https://nodejs.org/en/download/');
 
                 if (missing.length > 0) {
                     my.result.title = 'Missing dependencies'; 
