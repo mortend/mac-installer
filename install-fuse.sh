@@ -14,9 +14,15 @@ APP=$BIN/fuse\ X.app
 FUSE=$PREFIX/bin/fuse
 UNO=$PREFIX/bin/uno
 
+# Override tarball
+if [ -n "$1" ]; then
+    TGZ=$1
+fi
+
 # Debug
 echo USER:  $USER
 echo HOME:  $HOME
+echo TGZ:   $TGZ
 echo DST:   $DST
 echo FUSE:  $FUSE
 echo UNO:   $UNO
