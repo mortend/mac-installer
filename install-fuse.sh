@@ -7,7 +7,7 @@ export PATH=/Library/Frameworks/Mono.framework/Versions/Current/Commands:$PATH
 
 # Config
 TGZ=/tmp/fuse-x-studio-mac.tgz
-PREFIX=`npm prefix -g`
+PREFIX=/usr/local
 DST=$PREFIX/lib/node_modules/@fuse-x/studio-mac
 BIN=$DST/bin/Release
 APP=$BIN/fuse\ X.app
@@ -29,7 +29,7 @@ echo UNO:   $UNO
 
 # Install
 rm -rf ~/.dotnet-run
-npm install -g -f "$TGZ"
+npm install -g -f "$TGZ" --prefix "$PREFIX"
 "$FUSE" kill-all
 
 # Copy app
