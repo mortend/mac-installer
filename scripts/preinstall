@@ -21,5 +21,7 @@ rm -rf /usr/local/share/uno/SDKs
 rm -rf /usr/share/uno/SDKs
 
 # Temp files
+rm -rf /tmp/get-version.js
+rm -rf /tmp/version-gte.js
 rm -rf /tmp/install-fuse.*
 rm -rf /tmp/fuse-*.tgz

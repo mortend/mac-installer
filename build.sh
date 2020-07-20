@@ -13,6 +13,7 @@ chmod +x scripts/* *.sh
 
 # Include install-script
 cp -f install-fuse.sh root/tmp/
+cp *.js root/tmp/
 
 mkdir -p pkgs
 pkgbuild --root root \
