@@ -15,33 +15,6 @@
         <os-version min="10.10" />
     </allowed-os-versions>
 
-    <script>
-        <![CDATA[
-            function checkDependencies() {
-                var isInstalled = function(name, loc, url) {
-                    return !system.files.fileExistsAtPath(loc)
-                        ? "'" + loc + "' was not found.\nPlease install " + name + " and try again.\n" + url + "\n\n"
-                        : "";
-                };
-
-                var missing = isInstalled('Mono', '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono', 'https://www.mono-project.com/download/')
-                            + isInstalled('Node.js', '/usr/local/bin/node', 'https://nodejs.org/en/download/')
-                            + isInstalled('NPM', '/usr/local/bin/npm', 'https://nodejs.org/en/download/');
-
-                if (missing.length > 0) {
-                    my.result.title = 'Missing dependencies'; 
-                    my.result.message = missing;
-                    my.result.type = 'Fatal';
-                    return false; 
-                }
-
-                return true;
-            }
-        ]]>
-    </script>
-
-    <installation-check script="checkDependencies()" />
-
     <pkg-ref id="kr.fuseapps.studio"/>
     
     <choices-outline>
