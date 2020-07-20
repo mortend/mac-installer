@@ -7,6 +7,7 @@ fi
 function clean_up {
 	rm -rf /tmp/fuse-x-studio-mac.tgz
 	rm -rf /tmp/install-fuse.sh
+	rm -rf /tmp/check-system.sh
 	rm -rf /tmp/get-version.js
 	rm -rf /tmp/version-gte.js
 }
@@ -17,6 +18,9 @@ function error {
 	#clean_up
 	exit 1
 }
+
+su "$USER" -c 'bash /tmp/check-system.sh' \
+	2> /tmp/check-system.err > /tmp/check-system.log || exit 2
 
 su "$USER" -c 'bash /tmp/install-fuse.sh || bash /tmp/install-fuse.sh || bash /tmp/install-fuse.sh' \
 	2> /tmp/install-fuse.err > /tmp/install-fuse.log || error

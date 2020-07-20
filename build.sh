@@ -11,8 +11,9 @@ find root -name ".DS_Store" -depth -exec rm {} \;
 # Make sure scripts are executable
 chmod +x scripts/* *.sh
 
-# Include install-script
-cp -f install-fuse.sh root/tmp/
+# Include installer scripts
+cp check-system.sh root/tmp/
+cp install-fuse.sh root/tmp/
 cp *.js root/tmp/
 
 mkdir -p pkgs

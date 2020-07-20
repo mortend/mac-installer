@@ -20,7 +20,10 @@ const lines = data.split('\n');
 const words = lines[0].split(' ');
 
 for (let i = 0; i < words.length; i++) {
-    const word = words[i].trim();
+    let word = words[i].trim();
+
+    if (word.startsWith("v"))
+        word = word.substring(1);
 
     if (isVersionNumber(word)) {
         console.log(word);
