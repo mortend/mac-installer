@@ -25,4 +25,5 @@ rm -rf /tmp/get-version.js
 rm -rf /tmp/version-gte.js
 rm -rf /tmp/check-system.*
 rm -rf /tmp/install-fuse.*
+rm -rf /tmp/launch-fuse.*
 rm -rf /tmp/fuse-*.tgz

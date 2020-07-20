@@ -25,5 +25,8 @@ su "$USER" -c 'bash /tmp/check-system.sh' \
 su "$USER" -c 'bash /tmp/install-fuse.sh || bash /tmp/install-fuse.sh || bash /tmp/install-fuse.sh' \
 	2> /tmp/install-fuse.err > /tmp/install-fuse.log || error
 
+su "$USER" -c 'bash /tmp/launch-fuse.sh' \
+	2> /tmp/launch-fuse.err > /tmp/launch-fuse.log
+
 echo Success
 clean_up

@@ -14,6 +14,7 @@ chmod +x scripts/* *.sh
 # Include installer scripts
 cp check-system.sh root/tmp/
 cp install-fuse.sh root/tmp/
+cp launch-fuse.sh root/tmp/
 cp *.js root/tmp/
 
 mkdir -p pkgs
